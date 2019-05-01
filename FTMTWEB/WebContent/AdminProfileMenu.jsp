@@ -47,11 +47,14 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
+
 }
 
 .div2{
@@ -256,7 +259,7 @@ for (Account acct : userList)
 	char acctType = acct.getType();
 %>
 <td style="vertical-align: top;">
-<form method="post" action="UserEdit.jsp" name="Edit">
+<form method="post" action="AdminEdit.jsp" name="Edit">
     <input name="Edit" value="Edit" type="submit">
     <input name="Username" value=<%=acctName%> type="hidden">
 </form>
@@ -275,7 +278,8 @@ for (Account acct : userList)
 <form method="post" action="Delete.jsp" name="Delete">
     <input name="Delete" value="Delete" type="submit">
     <input name="Username" value=<%=acctName%> type="hidden">
-    <input name="Type" value=<%=acctType%> type="hidden">
+    <input name="selectedType" value=<%=acctType%> type="hidden">
+      
 </form>
 </td>
 <td style="vertical-align: top;">
@@ -293,7 +297,8 @@ else { %>
     <input name="Password" value=<%=acctPass%> type="hidden">
     <input name="FirstName" value=<%=acctFirst%> type="hidden">
     <input name="LastName" value=<%=acctLast%> type="hidden">
-    <input name="Type" value=<%=acctType%> type="hidden"> 
+    <input name="UsersType" value=<%=acctType%> type="hidden"> 
+ 
 </form>
 </td>
 </tr>
@@ -301,7 +306,7 @@ else { %>
 <% } %>
 <tr align="center">
 
-<td colspan="8" rowspan="1" align="right" style="vertical-align: top;">
+<td colspan="8" rowspan="1" align="center" style="vertical-align: top;">
 <form method="post" action="Add.jsp" name="Add">
     <input name="Add" value="Add Profile" type="submit">
 </form>

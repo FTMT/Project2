@@ -1,27 +1,21 @@
 <%@page language="java" import="FTMT.*" import="java.util.*"%>
 <%@include file="verifyLogin.jsp"%>
 <html>
-<head>
-<title>View Specific</title>
-</head>
-<body>
-<% 
-UserController uc = new UserController();
+<%
+UserController uc = (UserController)session.getAttribute("UserController"); 
+String name = (String)session.getAttribute("Username"); 
 char type = (char)session.getAttribute("Type");
 ArrayList<University> history = (ArrayList<University>)session.getAttribute("History"); 
-String name = (String)session.getAttribute("Username"); 
 String school = (String)request.getParameter("School"); 
 DBController db = new DBController();
 
 String s = uc.savedSchoolStringtoName(school);
+System.out.println("School = " + s);
 AdminController ac = new AdminController();
 University univ = ac.getUniversity(s);
-Account user  = (Account)session.getAttribute("Account");
-if(univ != null)
-{
-
-
 %>
+<body>
+
 
 <style>
 body {
@@ -33,13 +27,14 @@ html {align = center
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
-
 .div2{
 background-image: url(https://www.otago.ac.nz/_assets/OtagoCorporate/gfx/campaign.jpg);
 
@@ -145,9 +140,6 @@ td {
 }
 
 </style>
-</head>
-
-
 <body class=div2>
 
 	
@@ -164,16 +156,7 @@ history.add(univ); %>
 
 		<input name="Username" value=<%=name%> type="hidden">
 	</form>
-<%} %>
-
-<%-- <%else if (type == 'a' || type == 'A') { %> --%>
-<!-- 	<form method="post" action="AdminMenu.jsp"> -->
-<!-- 		<button class="tablink" >Profile Menu</button> -->
-
-<%-- 		<input name="Username" value=<%=name%> type="hidden"> --%>
-<!-- 	</form> -->
-<%-- <%} %> --%>
-
+	
 	<form method="post" action="Logout_action.jsp">
 		<button class="tablink" >Logout</button>
 		<input name="Logout" value="Log Out" type="hidden"> 
@@ -232,7 +215,87 @@ history.add(univ); %>
 			>...</button>
 		
 	</form>
+	
+	
+	
+	
+<%} %>
 
+<%if(type == 'a' || type == 'A') { %>
+<form method="post" action="AdminMenu.jsp">
+		<button class="tablink" >Profile Menu</button>
+
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+	<form method="post" action="Logout_action.jsp">
+		<button class="tablink" >Logout</button>
+		<input name="Logout" value="Log Out" type="hidden"> 
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+
+	<form method="post" action="AdminEdit.jsp">
+		<button class="tablink"
+			>Profile Settings</button>
+    <input name="Edit" value="Your Profile" type="hidden">
+    <input name="Username" value=<%=name%> type="hidden">
+	</form>
+	
+
+
+
+<form method="post" action="AdminProfileMenu.jsp" name="Edit">
+<button class="tablink" >List of Users</button>
+    <input name="Edit" value="Profile List" type="hidden">
+    <input name="Username" value=<%=name%> type="hidden">
+</form>
+
+
+    <form method="post" action="ListOfUniversities.jsp">
+		<button class="tablink">Universities List</button>
+		<input name="ViewSchools" value="View List of Schools" type="hidden">
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+	
+
+
+	<form method="post" action="UniversityEditMenu.jsp">
+		<button class="tablink"
+			>Search to Edit</button>
+		 <input name="SearchEdit" value="Search to Edit" type="hidden">
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+
+<form method="post" action="AddSchool.jsp" name="AddUniversity">
+
+		<button class="tablink">Add University</button>
+    <input name="AddUniversity" value="Add University" type="hidden">
+    	<input name="Username" value=<%=name%> type="hidden">
+</form>
+
+
+
+	
+<form>
+		<button class="tablink"
+			>...</button>
+		
+	</form>
+
+	
+	
+	
+	
+	
+	
+<%} %>
+
+	
 
 
 
@@ -240,147 +303,149 @@ history.add(univ); %>
 
 
 </body>
+<% 
 
-<body>
-<table style="text-align: left; width: 100%" border="1" cellpadding="2"
+if(univ != null)
+{
+%>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
 cellspacing="2">
 <tbody>
-
 <tr>
-<th colspan="2" align="center">Viewing School: <%=univ.getName()%>
+<th colspan="2" align="center" style="vertical-align: top;" bgcolor="DodgerBlue">Viewing School: <%=univ.getName()%><br>
 </th>
 </tr>
 <tr>
-
-<td style="vertical-align: top;">State
+<td style="vertical-align: top;">STATE<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getState()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Location
-</td>
-<td style="vertical-align: top;"><%= univ.getLocation()%>
+<td style="vertical-align: top;"><%= univ.getState()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">Control
+<td style="vertical-align: top;">LOCATION<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getControl()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Number of Students
-</td>
-<td style="vertical-align: top;"><%= univ.getNumStudents()%>
+<td style="vertical-align: top;"><%= univ.getLocation()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">% Female
+<td style="vertical-align: top;">CONTORL<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getPercFemales()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;"> SAT Verbal</td>
-<td style="vertical-align: top;"><%= univ.getSatVerbal()%>
+<td style="vertical-align: top;"><%= univ.getControl()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">SAT Math (avg.)
+<td style="vertical-align: top;">NUMBER OF STUDENTS<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getSatMath()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Expenses
-</td>
-<td style="vertical-align: top;"><%= univ.getExpenses()%>
+<td style="vertical-align: top;"><%= univ.getNumStudents()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">% Financial Aid
+<td style="vertical-align: top;">% FEMALE<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getPercAid()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Number of Applicants
-</td>
-<td style="vertical-align: top;"><%= univ.getNumApply()%>
+<td style="vertical-align: top;"><%= univ.getPercFemales()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">% Admitted
+<td style="vertical-align: top;">SAT VERBAL<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getPercAdmit()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">% Enrolled
-</td>
-<td style="vertical-align: top;"><%= univ.getPercEnrolled()%>
+<td style="vertical-align: top;"><%= univ.getSatVerbal()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">Academics Scale(1-5)
+<td style="vertical-align: top;">SAT MATH<br>
 </td>
-<td style="vertical-align: top;"><%= univ.getAcadScale()%>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Social Scale(1-5)
-</td>
-<td style="vertical-align: top;"><%=univ.getSocialScale()%>
+<td style="vertical-align: top;"><%= univ.getSatMath()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">Quality of Life Scale(1-5)
+<td style="vertical-align: top;">EXPENSES<br>
 </td>
-<td style="vertical-align: top;"><%=univ.getQualLife()%>
+<td style="vertical-align: top;"><%= univ.getExpenses()%><br>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">Emphases
+<td style="vertical-align: top;">% FINANCIAL AID<br>
 </td>
-<td>
+<td style="vertical-align: top;"><%= univ.getPercAid()%><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">NUMBER OF APPLICANTS<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getNumApply()%><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">% ADMITTED<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getPercAdmit()%><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">% ENROLLED<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getPercEnrolled()%><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">ACADEMICS SCALE(1-5)<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getAcadScale()%><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">SOCIAL SCALE(1-5)<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getSocialScale() %><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">QUALITY OF LIFE SCALE(1-5)<br>
+</td>
+<td style="vertical-align: top;"><%= univ.getQualLife() %><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;">EMPHASES<br>
+</td>
+<td style="vertical-align: top;">
 <table style="text-align: left; width: 100%;" border="1"
 cellpadding="2" cellspacing="2">
 <tbody>
-<% 
-ArrayList<String> emphases = db.getEmphases(s);
-for (String emph : emphases) 
-{ %>
 <tr>
-<td style="vertical-align: top;"><%=emph%>
+<td style="vertical-align: top;"><%=db.getEmphases(school)%><br>
 </td>
 </tr>
-<% } %>
-</tbody>
-</table>
-<% if (type == 'u' || type == 'U')%>
+<tr>
+<td style="vertical-align: top;"><br>
 </td>
 </tr>
-
 <tr>
-<td align="center" style="vertical-align: top;">
-
-<form method="post" action="saveSchool_action.jsp" name="SaveSchool">
-    <input name="SaveSchool" value="Save School"  type="submit">
-    <input name="School" value="<%=univ.getName()%>"  type="hidden">
-</form>
+<td style="vertical-align: top;"><br>
 </td>
-<td align="center" style="vertical-align: top;">
-<form method="post" action="viewRecommended.jsp" name="RecSchools">
-    <input name="RecSchools" value="View Similar Schools"  type="submit">
-    <input name="School" value="<%=univ.getName()%>"  type="hidden">
-</form>
-
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
+</td>
+</tr>
+<tr>
+<td style="vertical-align: top;"><br>
 </td>
 </tr>
 </tbody>
 </table>
-<%} %>
 
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+<% }
+
+else{
+	response.sendRedirect("viewSavedSchool.jsp?Error=1");
+}
+%>
+<br>
 </body>
 </html>

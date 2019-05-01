@@ -30,11 +30,13 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
 
 .div2{
@@ -217,148 +219,156 @@ td {
 <table style="text-align: left; width: 266px; height: 228px;"
 border="1" >
 <tbody>
+
+
 <tr>
-<td style="vertical-align: top;">School<br>
-</td>
-<td style="vertical-align: top;"><input name="School" value= > </td>
-</tr>
-<tr>
-<td style="vertical-align: top;">State<br>
-</td>
-<td style="vertical-align: top;"><input name="State" value= > </td>
-</tr>
-<tr>
-<td style="vertical-align: top;">Location<br>
-</td>
-<td style="vertical-align: top;"><input name="Location" value= ><br>
+<td>Name</td>
+<td><input name="School" >
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">Control<br>
-</td>
-<td style="vertical-align: top;"><input name="Control" value= ><br>
+<td>State</td>
+<td><input name="State" >
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">numStudentsLow<br>
+<td>Location</td>
+<td><input name="Location">
 </td>
-<td style="vertical-align: top;"><input name="numStudentsLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">numStudentsHigh<br>
+<td>Control</td>
+<td><input name="Control">
 </td>
-<td style="vertical-align: top;"><input name="numStudentsHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percFemLow<br>
+<td>Number Students Low</td>
+<td><input min="1" type="number"name="numStudentsLow">
 </td>
-<td style="vertical-align: top;"><input name="percFemLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percFemHigh<br>
+<tr>
+<td>Number Students High</td>
+<td><input min="1" type="number"name="numStudentsHigh">
 </td>
-<td style="vertical-align: top;"><input name="percFemHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">satVerbLow<br>
+<tr>
+<td>Percentage of Females Low</td>
+<td><input min="1" max="100" type="number"name="percFemLow">
 </td>
-<td style="vertical-align: top;"><input name="satVerbLow" value= > </td>
+</tr>
+
+<tr>
+<td>Percentage of Females High</td>
+<td><input min="1" max="100" type="number"name="percFemHigh">
+</td>
 </tr>
 <tr>
-<td style="vertical-align: top;">satVerbHigh<br>
+<td>SAT Verbal Low</td>
+<td><input min="1" max="1600" type="number"name="satVerbLow">
 </td>
-<td style="vertical-align: top;"><input name="satVerbHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">satMathLow<br>
+<td>SAT Verbal High</td>
+<td><input min="1" max="1600" type="number"name="satVerbHigh">
 </td>
-<td style="vertical-align: top;"><input name="satMathLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">satMathHigh<br>
+<td>SAT Math Low</td>
+<td><input min="1" max="1600" type="number"name="satMathLow">
 </td>
-<td style="vertical-align: top;"><input name="satMathHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">expensesLow<br>
+<td>SAT Math High</td>
+<td><input min="1" max="1600" type="number"name="satMathHigh">
 </td>
-<td style="vertical-align: top;"><input name="expensesLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">expensesHigh<br>
+<td>Expenses Low</td>
+<td><input min="1" type="number"name="expensesLow">
 </td>
-<td style="vertical-align: top;"><input name="expensesHigh" value= > </td>
+</tr>
+
+<tr>
+<td>Expenses High</td>
+<td><input min="1" type="number"name="expensesHigh">
+</td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percFinAidLow<br>
+<td>Percent Aided Low</td>
+<td><input min="1" max="100" type="number"name="percFinAidLow">
 </td>
-<td style="vertical-align: top;"><input name="percFinAidLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percFinAidHigh<br>
+<td>Percent Aided High</td>
+<td><input min="1" max="100" type="number"name="percFinAidHigh">
 </td>
-<td style="vertical-align: top;"><input name="percFinAidHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">numAppLow<br>
+<td>Number Applied Low</td>
+<td><input min="1" type="number"name="numAppLow">
 </td>
-<td style="vertical-align: top;"><input name="numAppLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">numAppHigh<br>
+<td>Number Applied High</td>
+<td><input min="1" type="number"name="numAppHigh">
 </td>
-<td style="vertical-align: top;"><input name="numAppHigh" value= > </td>
+</tr>
+
+<tr>
+<td>Percent Admitted Low</td>
+<td><input min="1" max="100" type="number"name="percAdmitLow">
+</td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percAdmitLow<br>
+<td>Percent Admitted High</td>
+<td><input min="1" max="100" type="number"name="percAdmitHigh">
 </td>
-<td style="vertical-align: top;"><input name="percAdmitLow" value= > </td>
+</tr>
+
+<tr>
+<td>Percent Enrolled Low</td>
+<td><input min="1" max="100" type="number"name="percEnrolledLow">
+</td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percAdmitHigh<br>
+<td>Percent Enrolled High</td>
+<td><input min="1" max="100" type="number"name="percEnrolledHigh">
 </td>
-<td style="vertical-align: top;"><input name="percAdmitHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percEnrolledLow<br>
+<td>AcadScale Low</td>
+<td><input type="number"name="acadScaleLow" min="1" max="5" >
 </td>
-<td style="vertical-align: top;"><input name="percEnrolledLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">percEnrolledHigh<br>
+<td>AcadScale High</td>
+<td><input type="number"name="acadScaleHigh" min="1" max="5" >
 </td>
-<td style="vertical-align: top;"><input name="percEnrolledHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">acadScaleLow<br>
+<td>Social Scale Low</td>
+<td><input min="1" max="5" type="number"name="socialScaleLow">
 </td>
-<td style="vertical-align: top;"><input name="acadScaleLow" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">acadScaleHigh<br>
+<td>Social Scale High</td>
+<td><input min="1" max="5" type="number"name="socialScaleHigh">
 </td>
-<td style="vertical-align: top;"><input name="acadScaleHigh" value= > </td>
 </tr>
 <tr>
-<td style="vertical-align: top;">socialScaleLow<br>
+<td>Quality of Life Low</td>
+<td><input min="1" max="5" type="number"name="qualLifeLow">
 </td>
-<td style="vertical-align: top;"><input name="socialScaleLow" value= > </td>
 </tr>
+
 <tr>
-<td style="vertical-align: top;">socialScaleHigh<br>
+<td>Quality of Life High</td>
+<td><input min="1" max="5" type="number"name="qualLifeHigh">
 </td>
-<td style="vertical-align: top;"><input name="socialScaleHigh" value= > </td>
 </tr>
-<tr>
-<td style="vertical-align: top;">qualLifeLow<br>
-</td>
-<td style="vertical-align: top;"><input name="qualLifeLow" value=> </td>
-</tr>
-<tr>
-<td style="vertical-align: top;">qualLifeHigh<br>
-</td>
-<td style="vertical-align: top;"><input name="qualLifeHigh" value=> </td>
-</tr>
+
 <tr>
 <td style="vertical-align: top;">emphases1<br>
 </td>

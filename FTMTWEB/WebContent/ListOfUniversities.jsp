@@ -6,16 +6,50 @@
 
 
 
-
-
-
-
 <%
+String error = request.getParameter("Error");
+String removedStr = request.getParameter("Removed");
+ArrayList<University> sortedResult = (ArrayList<University>)session.getAttribute("SortedResults");
+if (error != null)
+{
+ if (error == "1")
+ {
+	 %>
+	 <body>Edit failed: University not found</body>
+	 <%
+ }
+}
 
+if (removedStr != null)
+{
+ int removed = Integer.parseInt(removedStr);
+ if (removed > 0)
+ {
+	 %>
+	 <body>Removed University</body>
+	 <%
+ }
+ else
+ {
+	 %>
+	 <body>Remove University Failed</body>
+	 <%
+ }
+}
+
+AdminController ac = new AdminController();
+ArrayList<University> fullList = ac.viewUniversities();
+session.setAttribute("Results", fullList);
+char type = (char)session.getAttribute("Type");
+
+if (sortedResult != null)
+{
+	fullList = sortedResult;
+	session.setAttribute("SortedResults", null);
+}
 String name = (String)session.getAttribute("Username");
-Account user  = (Account)session.getAttribute("Account");
-
 %>
+
 
 <style>
 body {
@@ -27,11 +61,13 @@ html {align = center
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
 
 .div2{
@@ -48,8 +84,8 @@ background-image: url(https://www.otago.ac.nz/_assets/OtagoCorporate/gfx/campaig
 .tbl-header {
 	height: 300px;
 	table-layout: fixed;
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #2884bb, #5b6467);
+	background: linear-gradient(to right, #2884bb, #5b6467);
 	
 
 
@@ -76,6 +112,7 @@ section {
 }
 
 td {
+
 	padding: 15px;
 	text-align: left;
 	vertical-align: middle;
@@ -150,7 +187,82 @@ td {
 		<p>Here are all Universities.</p>
 	</div>
 
+<% if (type == 'a' || type == 'A') 
+	{%>	
+	
+		<form method="post" action="AdminMenu.jsp">
+		<button class="tablink" >Profile Menu</button>
 
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+	<form method="post" action="Logout_action.jsp">
+		<button class="tablink" >Logout</button>
+		<input name="Logout" value="Log Out" type="hidden"> 
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+
+	<form method="post" action="AdminEdit.jsp">
+		<button class="tablink"
+			>Profile Settings</button>
+    <input name="Edit" value="Your Profile" type="hidden">
+    <input name="Username" value=<%=name%> type="hidden">
+	</form>
+	
+
+
+
+<form method="post" action="AdminProfileMenu.jsp" name="Edit">
+<button class="tablink" >List of Users</button>
+    <input name="Edit" value="Profile List" type="hidden">
+    <input name="Username" value=<%=name%> type="hidden">
+</form>
+
+
+    <form method="post" action="ListOfUniversities.jsp">
+		<button class="tablink">Universities List</button>
+		<input name="ViewSchools" value="View List of Schools" type="hidden">
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+	
+
+
+	<form method="post" action="UniversityEditMenu.jsp">
+		<button class="tablink"
+			>Search to Edit</button>
+		 <input name="SearchEdit" value="Search to Edit" type="hidden">
+		<input name="Username" value=<%=name%> type="hidden">
+	</form>
+
+
+
+<form method="post" action="AddSchool.jsp" name="AddUniversity">
+
+		<button class="tablink">Add University</button>
+    <input name="AddUniversity" value="Add University" type="hidden">
+    	<input name="Username" value=<%=name%> type="hidden">
+</form>
+
+
+
+	
+<form>
+		<button class="tablink"
+			>...</button>
+		
+	</form>
+	
+	
+	
+	
+	
+	
+	<%}
+	else
+	{%>
 	
 	<form method="post" action="UserMenu.jsp">
 		<button class="tablink" >User Menu</button>
@@ -219,7 +331,7 @@ td {
 	</form>
 
 
-
+<%}%>
 
 
 
@@ -232,32 +344,6 @@ td {
 
 <table style="text-align: left; width: 100%;" border="1" >
 <tbody>
-<%
-String error = request.getParameter("Error");
-ArrayList<University> sortedResult = (ArrayList<University>)session.getAttribute("SortedResults");
-if (error != null)
-{
- if (error == "1")
- {
-	 %>
-	 <tr>
-	 <th>Edit failed: University not found"</th>
-	 </tr>
-	 <%
- }
-}
-
-AdminController ac = new AdminController();
-ArrayList<University> fullList = ac.viewUniversities();
-session.setAttribute("Results", fullList);
-char type = (char)session.getAttribute("Type");
-
-if (sortedResult != null)
-{
-	fullList = sortedResult;
-	session.setAttribute("SortedResults", null);
-}
-%>
 
 <tr>
 <td>

@@ -2,7 +2,7 @@
 <%@include file="verifyLogin.jsp"%>
 <!DOCTYPE html>
 <html>
-
+<title>University Edit</title>
 <%
 AdminController ac = (AdminController)session.getAttribute("AdminController");
 String name = request.getParameter("Name");
@@ -18,11 +18,13 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
 
 .div2{
@@ -124,14 +126,14 @@ td {
 	<form method="post" action="AdminMenu.jsp">
 		<button class="tablink" >Profile Menu</button>
 
-		<input name="Username" value=<%=name%> type="hidden">
+		<input name="Username" value="<%=name%>" type="hidden">
 	</form>
 
 
 	<form method="post" action="Logout_action.jsp">
 		<button class="tablink" >Logout</button>
 		<input name="Logout" value="Log Out" type="hidden"> 
-		<input name="Username" value=<%=name%> type="hidden">
+		<input name="Username" value="<%=name%>" type="hidden">
 	</form>
 
 
@@ -140,7 +142,7 @@ td {
 		<button class="tablink"
 			>Profile Settings</button>
     <input name="Edit" value="Your Profile" type="hidden">
-    <input name="Username" value=<%=name%> type="hidden">
+    <input name="Username" value="<%=name%>" type="hidden">
 	</form>
 	
 
@@ -149,14 +151,14 @@ td {
 <form method="post" action="AdminProfileMenu.jsp" name="Edit">
 <button class="tablink" >List of Users</button>
     <input name="Edit" value="Profile List" type="hidden">
-    <input name="Username" value=<%=name%> type="hidden">
+    <input name="Username" value="<%=name%>" type="hidden">
 </form>
 
 
     <form method="post" action="ListOfUniversities.jsp">
 		<button class="tablink">Universities List</button>
 		<input name="ViewSchools" value="View List of Schools" type="hidden">
-		<input name="Username" value=<%=name%> type="hidden">
+		<input name="Username" value="<%=name%>" type="hidden">
 	</form>
 	
 
@@ -165,7 +167,7 @@ td {
 		<button class="tablink"
 			>Search to Edit</button>
 		 <input name="SearchEdit" value="Search to Edit" type="hidden">
-		<input name="Username" value=<%=name%> type="hidden">
+		<input name="Username" value="<%=name%>" type="hidden">
 	</form>
 
 
@@ -174,7 +176,7 @@ td {
 
 		<button class="tablink">Add University</button>
     <input name="AddUniversity" value="Add University" type="hidden">
-    	<input name="Username" value=<%=name%> type="hidden">
+    	<input name="Username" value="<%=name%>" type="hidden">
 </form>
 
 
@@ -202,6 +204,7 @@ if (univ != null)
 {
 %>
 
+
 <form method="post" action="UniversityEdit_action.jsp?Name=<%=univ.getName()%>" name="editSchool">
 <table style="text-align: left; width: 100%;" border="1">
 <tbody>
@@ -210,75 +213,89 @@ if (univ != null)
 </th>
 <tr >
 <td>Location</td>
-<td style="vertical-align: top;"><input name="Location" value=<%=univ.getLocation()%>> </td>
+<td style="vertical-align: top;"><input name="Location" value="<%=univ.getLocation()%>"> </td>
 </tr>
 <tr>
 <td>State</td>
-<td style="vertical-align: top;"><input name="State" value=<%=univ.getState()%>></td>
+<td style="vertical-align: top;"><input name="State" value="<%=univ.getState()%>"></td>
 </tr>
 <tr >
 <td>AcadScale</td>
-<td style="vertical-align: top;"><input name="AcadScale" value=<%=univ.getAcadScale()%>> </td>
+<td style="vertical-align: top;"><input name="AcadScale" value="<%=univ.getAcadScale()%>"> </td>
 </tr>
 <tr>
 <td>Expenses</td>
-<td style="vertical-align: top;"><input name="Expenses" value=<%=univ.getExpenses()%>> </td>
+<td style="vertical-align: top;"><input name="Expenses" value="<%=univ.getExpenses()%>"> </td>
 </tr>
 <tr >
 <td>Number Applied</td>
-<td style="vertical-align: top;"><input name="NumApply" value=<%=univ.getNumApply()%>> </td>
+<td style="vertical-align: top;"><input name="NumApply" value="<%=univ.getNumApply()%>"> </td>
 </tr>
 <tr>
 <td>Percent Admitted</td>
-<td style="vertical-align: top;"><input name="PercAdmit" value=<%=univ.getPercAdmit()%>> </td>
+<td style="vertical-align: top;"><input name="PercAdmit" value="<%=univ.getPercAdmit()%>"> </td>
 </tr>
 <tr >
 <td>Percent Aided</td>
-<td style="vertical-align: top;"><input name="PercAid" value=<%=univ.getPercAid()%>> </td>
+<td style="vertical-align: top;"><input name="PercAid" value="<%=univ.getPercAid()%>"> </td>
 </tr>
 <tr>
 <td>Percent Enrolled</td>
-<td style="vertical-align: top;"><input name="PercEnrolled" value=<%=univ.getPercEnrolled()%>> </td>
+<td style="vertical-align: top;"><input name="PercEnrolled" value="<%=univ.getPercEnrolled()%>"> </td>
 </tr>
 <tr >
 <td>Percentage of Females</td>
-<td style="vertical-align: top;"><input name="PercFemale" value=<%=univ.getPercFemales()%>> </td>
+<td style="vertical-align: top;"><input name="PercFemale" value="<%=univ.getPercFemales()%>"> </td>
 </tr>
 <tr>
 <td>Quality of Life (out of 5)</td>
-<td style="vertical-align: top;"><input name="QualLife" value=<%=univ.getQualLife()%>> </td>
+<td style="vertical-align: top;"><input name="QualLife" value="<%=univ.getQualLife()%>"> </td>
 </tr>
 <tr >
 <td>SAT Math Score</td>
-<td style="vertical-align: top;"><input name="SATMath" value=<%=univ.getSatMath()%>> </td>
+<td style="vertical-align: top;"><input name="SATMath" value="<%=univ.getSatMath()%>"> </td>
 </tr>
 <tr>
 <td>Social Scale (out of 5)</td>
-<td style="vertical-align: top;"><input name="SocialScale" value=<%=univ.getSocialScale()%>> </td>
+<td style="vertical-align: top;"><input name="SocialScale" value="<%=univ.getSocialScale()%>"> </td>
 </tr>
 <tr >
 <td>Control</td>
-<td style="vertical-align: top;"><input name="Control" value=<%=univ.getControl()%>> </td>
+<td style="vertical-align: top;"><input name="Control" value="<%=univ.getControl()%>"> </td>
 </tr>
 <tr>
 <td>Number of Students</td>
-<td style="vertical-align: top;"><input name="NumStudents" value=<%=univ.getNumStudents()%>> </td>
+<td style="vertical-align: top;"><input name="NumStudents" value="<%=univ.getNumStudents()%>"> </td>
 </tr>
 <tr >
 <td>SAT Verbal Score</td>
-<td style="vertical-align: top;"><input name="SATVerbal" value=<%=univ.getSatVerbal()%>> </td>
+<td style="vertical-align: top;"><input name="SATVerbal" value="<%=univ.getSatVerbal()%>"> </td>
 </tr>
 <tr>
 <td align="center" rowspan="1" style="vertical-align: top;">
     <input name="Reset" value="Reset" type="reset">
 </td>
-<td align="center" rowspan="1" style="vertical-align: top;">
-    <input name="Submit" value="Submit" type="submit">
+<td rowspan="1" style="vertical-align: top;">
+    <input align="left" name="Submit" value="Submit" type="submit">
+   
 </td>
+
 </tr>
 </tbody>
 </table>
 </form>
+<table>
+<tbody>
+<tr>
+<td align="right" rowspan="2">
+ <form  method="post" action="UniversityDelete.jsp" name="deleteSchool">
+		<input action="UniversityDelete.jsp" name="Delete" value="Delete University" type="Submit">
+		<input name="Name" value="<%=univ.getName()%>" type="hidden">
+	</form>
+	</td>
+	</tr>
+	</tbody>
+	</table>
 <% }
 else
 {

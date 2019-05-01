@@ -16,11 +16,13 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
 
 .div2{
@@ -115,8 +117,8 @@ td {
 <body class = div2>
 
 	<div class="tabcontent">
-		<h1>User List</h1>
-		<p>Below is a list of all users.</p>
+		<h1>University Edit Menu</h1>
+		<p>Search a University to Edit.</p>
 	</div>
 	
 	<form method="post" action="AdminMenu.jsp">
@@ -199,7 +201,7 @@ border="1" >
 <tr>
 <td style="vertical-align: top;">School name
 </td>
-<td style="vertical-align: top;"><input name="Name" value=""> </td>
+<td style="vertical-align: top;"><input name="Name"  value=""> </td>
 </tr>
 <tr>
 <td style="vertical-align: top;"><input value="Reset"

@@ -19,8 +19,8 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+			background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
@@ -118,8 +118,8 @@ td {
 <body class = div2>
 
 	<div class="tabcontent">
-		<h1>Admin Menu</h1>
-		<p>Welcome <%=user.getFirstName()%> select a tab to get started!</p>
+		<h1>Admin Edit Menu</h1>
+		<p>Edit User and select Edit to commit changes.</p>
 	</div>
 	
 	<form method="post" action="AdminMenu.jsp">

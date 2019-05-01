@@ -14,7 +14,7 @@ if (added != null)
 }
 AdminController ac = (AdminController)session.getAttribute("AdminController");
 String name = request.getParameter("Name");
-University univ = ac.getUniversity(name);
+
 %>
 
 
@@ -28,11 +28,13 @@ html {align = center;
 }
 
 table {
-	background: -webkit-linear-gradient(left, #ffafbd, #ffc3a0);
-	background: linear-gradient(to right, #ffafbd, #ffc3a0);
+	background: -webkit-linear-gradient(left, #5b6467,#2884bb);
+	background: linear-gradient(to right, #5b6467,#2884bb);
 	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	table-layout: fixed;
+	color: white;
+	
 }
 
 .div2{
@@ -127,8 +129,8 @@ td {
 <body class = div2>
 
 	<div class="tabcontent">
-		<h1>User List</h1>
-		<p>Below is a list of all users.</p>
+		<h1>Add User</h1>
+		<p>Fill out information and hit add to approve.</p>
 	</div>
 	
 	<form method="post" action="AdminMenu.jsp">
