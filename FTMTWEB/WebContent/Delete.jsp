@@ -1,29 +1,31 @@
 <%@page language="java" import="FTMT.* , java.util.*"%>
 <%@include file="verifyLogin.jsp"%>
+<html><title>Delete Profile</title></html>
 <%
-	AdminController ac = (AdminController)session.getAttribute("AdminController"); 
-String currentUsername = request.getParameter("Username");
+	char type = request.getParameter("Type").charAt(0); 
+	AdminController ac = new AdminController();
+	UserController uc = new UserController();
+
+	String currentUsername = request.getParameter("Username");
 	Account acct = ac.getProfile(currentUsername);
-	UserController uc = (UserController)session.getAttribute("UserController");
 	ArrayList<String> savedList = new ArrayList<String>();
 
-	if(acct.getType()== 'U'|| acct.getType()== 'u')
+	if(type == 'U'||type == 'u')
 	{
-		
-		savedList = uc.viewSavedSchools(currentUsername);	 
+	 savedList = uc.viewSavedSchools(currentUsername);	 
 	 
 	 for(String univName : savedList)
 	 {
-		 int index = univName.indexOf("(");
-		 univName = univName.substring(0, index-1);
+		univName = uc.savedSchoolStringtoName(univName);
 		// System.out.println(univName)
 		uc.removeSavedSchool(currentUsername, univName.toUpperCase());
-	
-		
-
 	 }
-	
+	 response.sendRedirect("index.jsp?Error=-1");
+	 return;
 	}
-	ac.removeProfile(acct.getUsername());
-	response.sendRedirect("Menu.jsp");
+	
+	int result = ac.removeProfile(acct.getUsername());
+	System.out.println("Delete (ln28) result: [" + result + "]");
+	response.sendRedirect("AdminProfileMenu.jsp?Removed=" + result);
+	return;
 %>
